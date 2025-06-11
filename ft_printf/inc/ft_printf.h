@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/17 15:33:29 by maborges          #+#    #+#             */
-/*   Updated: 2025/05/21 16:14:14 by maborges         ###   ########.fr       */
+/*   Created: 2024/12/11 15:25:03 by maborges          #+#    #+#             */
+/*   Updated: 2025/06/11 12:56:52 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <unistd.h> /* for read() and close()*/
-# include <fcntl.h> /* for read() flags*/
+# include <stdarg.h>
+# include <unistd.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-# include <stdlib.h> /* free and malloc */
-# include "../libft.h"
-
-char		*get_next_line(int fd);
+int			ft_printf(const char *__format, ...);
+int			ft_putnbr(int n);
+int			ft_putnbr_unsigned(unsigned int n);
+int			ft_putstr(char *s);
+int			ft_putadress(void *pointer);
+int			ft_puthex_min(unsigned int hex);
+int			ft_puthex(unsigned int hex);
+int			ft_putchar(char c);
 
 #endif

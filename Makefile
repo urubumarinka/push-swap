@@ -3,8 +3,8 @@ NAME = push_swap
 CC = cc
 CFLAGS = -g -Wall -Werror -Wextra
 
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
+FT_PRINTF_DIR = ft_printf
+FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 
 INCLUDES = inc/
 
@@ -12,13 +12,15 @@ REMOVE = rm -f
 
 SRC_DIR = src/
 
+#$(SRC_DIR)algo_three.c \#
+#$(SRC_DIR)init_stack_a.c \#
+#$(SRC_DIR)operations.c \ #
+
 SRCS = \
-$(SRC_DIR)main.c \
-$(SRC_DIR)map_parsing.c \
-$(SRC_DIR)map_parsing_utils.c \
-$(SRC_DIR)game_loop.c \
-$(SRC_DIR)load_img.c \
 $(SRC_DIR)frees_and_errors.c \
+$(SRC_DIR)main.c \
+$(SRC_DIR)ps_utils.c \
+$(SRC_DIR)split.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -28,31 +30,31 @@ YELLOW = \033[0;33m
 CYAN = \033[0;36m
 RESET = \033[0m
 
-all: $(LIBFT) $(NAME)
+all: $(FT_PRINTF) $(NAME)
 	@echo "$(GREEN)Compilation successfully done!!$(RESET)"
 
-$(LIBFT):
-	@echo "$(YELLOW)Compiling libft...$(RESET)"
-	$(MAKE) -C $(LIBFT_DIR)
+$(FT_PRINTF):
+	@echo "$(YELLOW)Compiling FT_PRINTF...$(RESET)"
+	$(MAKE) -C $(FT_PRINTF_DIR)
 
 $(NAME): $(OBJS)
 	@echo "$(CYAN)Linking push_swap...$(RESET)"
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(FT_PRINTF) -o $(NAME)
 	@echo "$(GREEN)push_swap executable created successfully!$(RESET)"
 
 %.o: %.c
 	@echo "$(CYAN)Compiling $<...$(RESET)"
-	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(FT_PRINTF_DIR) -c $< -o $@
 
 clean:
 	@echo "$(YELLOW)Cleaning object files...$(RESET)"
 	$(REMOVE) $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(FT_PRINTF_DIR) clean
 
 fclean: clean
 	@echo "$(YELLOW)Removing executables...$(RESET)"
 	$(REMOVE) $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 
