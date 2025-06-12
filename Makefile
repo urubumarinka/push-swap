@@ -13,7 +13,6 @@ REMOVE = rm -f
 SRC_DIR = src/
 
 #$(SRC_DIR)algo_three.c \#
-#$(SRC_DIR)init_stack_a.c \#
 #$(SRC_DIR)operations.c \ #
 
 SRCS = \
@@ -21,6 +20,7 @@ $(SRC_DIR)frees_and_errors.c \
 $(SRC_DIR)main.c \
 $(SRC_DIR)ps_utils.c \
 $(SRC_DIR)split.c \
+$(SRC_DIR)init_stack_a.c \
 
 OBJS = $(SRCS:.c=.o)
 

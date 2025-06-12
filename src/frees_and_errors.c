@@ -6,13 +6,11 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:38:11 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/11 21:53:35 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:12:37 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-
 
 void	error_msg(void)
 {
@@ -22,5 +20,18 @@ void	error_msg(void)
 
 void	free_and_error(t_node **stack)
 {
-	//here write how to take a linked_list and free each node;
+	free_stack(stack);
+	error_msg();
+}
+
+void	free_stack(t_node **stack)
+{
+	t_node	*tmp;
+
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
 }

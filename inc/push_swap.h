@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:42:54 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/11 21:52:14 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:15:33 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef struct s_node
 
 //Error Handlers
 void			error_msg(void);
-
+void			free_and_error(t_node **stack);
+void			free_stack(t_node **stack);
 
 //stack
 char			**split(char *s, char c);
@@ -48,8 +49,6 @@ void			init_stack_a(t_node **stack_a, char **av);
 
 t_node			*find_max(t_node *stack);
 char			*ft_strchr(const char *s, int c);
-
-
 
 //Commands
 

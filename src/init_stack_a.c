@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 16:19:10 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/11 22:45:41 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/12 17:18:24 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ exceeding the integer limits, and/or the presence of duplicates. */
 
 
 
-static int	validity_check(char *arg)
+static int	validity_checker(char *arg)
 {
 
 	if (!(*arg == '-' || *arg == '+' || (*arg >= '0' && *arg <= '9')))
 		return (0);
-	if ((*arg == '-' || *arg == '+' && !(arg[1] >= '0' && arg[1] <= '9')))
+	if ((*arg == '-' || *arg == '+') && !(arg[1] >= '0' && arg[1] <= '9'))
 		return (0);
 	while (*++arg)
 	{
@@ -56,18 +56,44 @@ static long	ft_atol(char *str)
 	return (n * sign);
 }
 
-static int	check_duplicate(t_node *stack_a, long nbr)
+static int	duplicate_checker(t_node *stack_a, int nbr)
 {
 	while (stack_a)
 	{
 		if (stack_a->num == nbr)
-			return (0); 
+			return (0);
 		stack_a = stack_a->next;
 	}
 	return (1);
 }
 
-void	init_stack_a(t_node *stack_a, char **av)
+static int	create_new_node(t_node **stack_a, int nbr)
+{
+	t_node	*new;
+	t_node	*tmp;
+
+	new = malloc(sizeof(t_node));
+	if (!new)
+		return (0);
+	new->num = nbr;
+	new->index = 0;
+	new->cost = 0;
+	new->cheapest = false;
+	new->above_median = false;
+	new->target_node = NULL;
+	new->next = NULL;
+	new->prev = NULL;
+	if (!stack_a)
+		return (*stack_a = new, 1);
+	tmp = *stack_a;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	new->prev = tmp;
+	return (1);
+}
+
+void	init_stack_a(t_node **stack_a, char **av)
 {
 	int		i;
 	long	num;
@@ -75,15 +101,15 @@ void	init_stack_a(t_node *stack_a, char **av)
 	i = 0;
 	while (av[i])
 	{
-		if (!validity_check(av[i]))
-			free_and_error(&stack_a);
+		if (!validity_checker(av[i]))
+			free_and_error(stack_a);
 		num = ft_atol(av[i]);
 		if (num < INT_MIN || num > INT_MAX)
-			free_and_error(&stack_a);
-		if (!check_duplicate(stack_a, num))
-			free_and_error(&stack_a);
-		if (!create_new_node(&stack_a, av[i]))
-			free_and_error(&stack_a);
+			free_and_error(stack_a);
+		if (!duplicate_checker(*stack_a, (int)num))
+			free_and_error(stack_a);
+		if (!create_new_node(stack_a, (int)num))
+			free_and_error(stack_a);
 		i++;
 	}
 }
