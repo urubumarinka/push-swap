@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:42:54 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/12 17:15:33 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/18 00:13:20 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,28 @@ void			free_stack(t_node **stack);
 char			**split(char *s, char c);
 void			init_stack_a(t_node **stack_a, char **av);
 
-//Nodes init
-
-//Utils
-
-t_node			*find_max(t_node *stack);
+//Push_Swap Utils
 char			*ft_strchr(const char *s, int c);
+t_node			*find_max(t_node *stack);
+int				stack_len(t_node *stack);
+t_node			*find_last(t_node *stack);
 
 //Commands
+void			sa(t_node **stack_a);
+void			sb(t_node **stack_b);
+void			ss(t_node **stack_a, t_node **stack_b);
+
+void			ra(t_node **stack_a);
+void			rb(t_node **stack_b);
+void			rr(t_node **stack_a, t_node **stack_b);
+
+void			rra(t_node **stack_a);
+void			rrb(t_node **stack_b);
+void			rrr(t_node **stack_a, t_node **stack_b);
 
 //Algorithm
+
+void			algo_three(t_node **stack_a);
+void			algo_multi(t_node **stack_a, t_node **stack_b);
 
 #endif

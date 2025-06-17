@@ -16,11 +16,16 @@ SRC_DIR = src/
 #$(SRC_DIR)operations.c \ #
 
 SRCS = \
+$(SRC_DIR)algo_multi.c \
+$(SRC_DIR)algo_three.c \
 $(SRC_DIR)frees_and_errors.c \
+$(SRC_DIR)init_stack_a.c \
 $(SRC_DIR)main.c \
 $(SRC_DIR)ps_utils.c \
+$(SRC_DIR)reverse_rotates.c \
+$(SRC_DIR)rotates.c \
 $(SRC_DIR)split.c \
-$(SRC_DIR)init_stack_a.c \
+$(SRC_DIR)swaps.c \
 
 OBJS = $(SRCS:.c=.o)
 
