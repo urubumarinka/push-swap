@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   swaps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 14:54:06 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/17 22:17:00 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/19 13:26:56 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static void	swap(t_node **stack)
 		return ;
 	first = *stack;
 	second = first->next;
-	first->next = first;
-	first->prev = second->prev;
-	if (second->prev)
-		second->prev->next = first;
-	second->next = NULL;
-	second->prev = second;
+	first->next = second->next;
+	first->prev = second;
+	if (second->next)
+		second->next->prev = first;
+	second->next = first;
+	second->prev = NULL;
 	*stack = second;
 }
 

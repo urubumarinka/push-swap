@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 22:23:25 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/17 23:25:26 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/19 13:03:41 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static void	rotate(t_node **stack)
 		return ;
 	first = *stack;
 	last = find_last(*stack);
+	*stack = first->next;
+	(*stack)->prev = NULL;
 	last->next = first;
 	first->prev = last;
-	*stack = first->next;
-	first->next->prev = NULL;
 	first->next = NULL;
 }
 
