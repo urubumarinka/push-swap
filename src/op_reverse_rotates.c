@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotates.c                                  :+:      :+:    :+:   */
+/*   op_reverse_rotates.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:26:12 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/17 23:49:13 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/24 22:38:08 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,14 @@ void	rrb(t_node **stack_b)
 	ft_printf("rrb\n");
 }
 
-void	rrr(t_node **stack_a, t_node **stack_b)
+void	rrr(t_node **stack_a, t_node **stack_b, t_node *cheapest)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
-	ft_printf("rrr\n");
+	while (*stack_b != cheapest->target_node && *stack_a != cheapest)
+	{
+		reverse_rotate(stack_a);
+		reverse_rotate(stack_b);
+		ft_printf("rrr\n");
+	}
+	get_index_median(*stack_a);
+	get_index_median(*stack_b);
 }

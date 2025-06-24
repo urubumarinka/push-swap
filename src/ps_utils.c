@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 14:44:12 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/17 22:28:51 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/24 22:12:56 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,18 @@ t_node	*find_last(t_node *stack)
 	while (stack && stack->next)
 		stack = stack->next;
 	return (stack);
+}
+
+t_node	*get_cheapest(t_node *stack)
+{
+	t_node	*cheapest;
+
+	cheapest = NULL;
+	while (stack)
+	{
+		if (stack->cheapest == true)
+			cheapest = stack;
+		stack = stack->next;
+	}
+	return (cheapest);
 }

@@ -6,13 +6,13 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:33:27 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/19 13:41:23 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/23 12:44:47 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static int	stack_sorted(t_node *stack)
+int	stack_sorted(t_node *stack)
 {
 	while (stack && stack->next)
 	{
