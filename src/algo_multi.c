@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:52:14 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/24 22:40:50 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:18:33 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,32 @@ static void	push_a2b(t_node **stack_a, t_node **stack_b)
 	else if (!(cheapest_a->above_median)
 		&& !(cheapest_a->target_node->above_median))
 		rrr(stack_a, stack_b, cheapest_a);
-	set_top (stack_a, cheapest_a, 'a');
-	set_top(stack_b, cheapest_a->target_node, 'b');
+	put_on_top(stack_a, cheapest_a, 'a');
+	put_on_top(stack_b, cheapest_a->target_node, 'b');
 	pb(cheapest_a, cheapest_a->target_node);
+}
+
+static void	push_b2a(t_node **stack_b, t_node **stack_a)
+{
+	t_node	*cheapest_a;
+
+	put_on_top(stack_a, (*stack_b)->target_node, 'a');
+	pa(stack_b, stack_a);
+}
+
+static void	min_to_top(t_node **stack)
+{
+	t_node	*min;
+
+	min = find_min(*stack);
+	while (*stack != min)
+	{
+		if (min->above_median)
+			ra(stack);
+		else
+			rra(stack);
+		get_index_median(*stack);
+	}
 }
 
 void	algo_multi(t_node **stack_a, t_node **stack_b)
@@ -45,10 +68,10 @@ void	algo_multi(t_node **stack_a, t_node **stack_b)
 	algo_three(*stack_a);
 	while (*stack_b)
 	{
-		prepare_node_b(*stack_a, *stack_b); //to do
-		push_b2a(stack_a, stack_b); // to do
+		prepare_node_b(*stack_a, *stack_b);
+		push_b2a(stack_a, stack_b);
 	}
 	get_index_median(*stack_a);
-	//check if min is on top
+	min_to_top(stack_a);
 }
 

@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 21:49:12 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/19 22:24:36 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:07:25 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static void	push(t_node **src, t_node **dest)
 	*dest = to_push;
 }
 
-void	pa(t_node **stack_a, t_node**stack_b)
+void	pa(t_node **stack_b, t_node**stack_a)
 {
-	push(stack_a, stack_b);
+	push(stack_b, stack_a);
 	ft_printf("pa\n");
 }
 
-void	pb(t_node **stack_b, t_node **stack_a)
+void	pb(t_node **stack_a, t_node **stack_b)
 {
-	push(stack_b, stack_a);
+	push(stack_a, stack_b);
 	ft_printf("pb\n");
 }
