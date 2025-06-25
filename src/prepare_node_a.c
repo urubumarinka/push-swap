@@ -6,11 +6,11 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:30:27 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/25 12:42:47 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:15:11 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h""
+#include "../inc/push_swap.h"
 
 void	get_index_median(t_node *stack)
 {
@@ -30,18 +30,18 @@ void	get_index_median(t_node *stack)
 	}
 }
 
-static void	find_target_a2b(t_node *stack_a, t_node *stack_b)
+void	find_target_a2b(t_node *stack_a, t_node *stack_b)
 {
 	t_node	*current_b;
 	t_node	*best_target;
 	long	match;
 
-	while(stack_a)
+	while (stack_a)
 	{
 		match = LONG_MIN;
 		best_target = NULL;
 		current_b = stack_b;
-		while(current_b)
+		while (current_b)
 		{
 			if (current_b->num < stack_a->num && current_b->num > match)
 			{
@@ -57,7 +57,7 @@ static void	find_target_a2b(t_node *stack_a, t_node *stack_b)
 	}
 }
 
-static  void	find_cost_a2b(t_node *stack_a, t_node *stack_b)
+static void	find_cost_a2b(t_node *stack_a, t_node *stack_b)
 {
 	t_node	*target_b;
 

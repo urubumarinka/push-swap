@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:42:54 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/25 13:28:36 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:11:12 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ int				stack_sorted(t_node *stack);
 //Push_Swap Utils
 char			*ft_strchr(const char *s, int c);
 t_node			*find_max(t_node *stack);
-int				stack_len(t_node *stack);
+t_node			*find_min(t_node *stack);
 t_node			*find_last(t_node *stack);
+int				stack_len(t_node *stack);
 void			prepare_node_a(t_node *stack_a, t_node *stack_b);
+void			prepare_node_b(t_node *stack_a, t_node *stack_b);
 void			find_target_a2b(t_node *stack_a, t_node *stack_b);
 void			set_cheapest(t_node *stack);
 t_node			*get_cheapest(t_node *stack);
-t_node			*find_min(t_node *stack);
 void			put_on_top(t_node **stack, t_node *cheapest, char stack_name);
 
 

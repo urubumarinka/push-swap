@@ -21,11 +21,15 @@ $(SRC_DIR)algo_three.c \
 $(SRC_DIR)frees_and_errors.c \
 $(SRC_DIR)init_stack_a.c \
 $(SRC_DIR)main.c \
+$(SRC_DIR)op_pushes.c \
+$(SRC_DIR)op_reverse_rotates.c \
+$(SRC_DIR)op_rotates.c \
+$(SRC_DIR)op_swaps.c \
+$(SRC_DIR)prepare_node_a.c \
+$(SRC_DIR)prepare_node_b.c \
+$(SRC_DIR)ps_utils_2.c \
 $(SRC_DIR)ps_utils.c \
-$(SRC_DIR)reverse_rotates.c \
-$(SRC_DIR)rotates.c \
 $(SRC_DIR)split.c \
-$(SRC_DIR)swaps.c \
 
 OBJS = $(SRCS:.c=.o)
 

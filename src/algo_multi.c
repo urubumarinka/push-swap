@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:52:14 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/25 13:18:33 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:12:02 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ static void	push_a2b(t_node **stack_a, t_node **stack_b)
 		rrr(stack_a, stack_b, cheapest_a);
 	put_on_top(stack_a, cheapest_a, 'a');
 	put_on_top(stack_b, cheapest_a->target_node, 'b');
-	pb(cheapest_a, cheapest_a->target_node);
+	pb(stack_a, stack_b);
 }
 
 static void	push_b2a(t_node **stack_b, t_node **stack_a)
 {
-	t_node	*cheapest_a;
-
 	put_on_top(stack_a, (*stack_b)->target_node, 'a');
 	pa(stack_b, stack_a);
 }
@@ -56,16 +54,16 @@ void	algo_multi(t_node **stack_a, t_node **stack_b)
 	int	len_a;
 
 	len_a = stack_len(*stack_a);
-	if (len_a-- > 3 && !stack_sorted(stack_a))
+	if (len_a-- > 3 && !stack_sorted(*stack_a))
 		pb(stack_b, stack_a);
-	if (len_a-- > 3 && !stack_sorted(stack_a))
+	if (len_a-- > 3 && !stack_sorted(*stack_a))
 		pb(stack_b, stack_a);
-	while (len_a-- > 3 && !stack_sorted(stack_a))
+	while (len_a-- > 3 && !stack_sorted(*stack_a))
 	{
 		prepare_node_a(*stack_a, *stack_b);
 		push_a2b(stack_a, stack_b);
 	}
-	algo_three(*stack_a);
+	algo_three(stack_a);
 	while (*stack_b)
 	{
 		prepare_node_b(*stack_a, *stack_b);
