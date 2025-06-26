@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 12:55:43 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/25 13:28:17 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:30:38 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	put_on_top(t_node **stack, t_node *cheapest, char stack_name)
 {
 	while (*stack != cheapest)
 	{
+		get_index_median(*stack);
 		if (stack_name == 'a')
 		{
 			if (cheapest->above_median)
@@ -49,6 +50,5 @@ void	put_on_top(t_node **stack, t_node *cheapest, char stack_name)
 			else
 				rrb(stack);
 		}
-
 	}
 }

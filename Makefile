@@ -12,9 +12,6 @@ REMOVE = rm -f
 
 SRC_DIR = src/
 
-#$(SRC_DIR)algo_three.c \#
-#$(SRC_DIR)operations.c \ #
-
 SRCS = \
 $(SRC_DIR)algo_multi.c \
 $(SRC_DIR)algo_three.c \

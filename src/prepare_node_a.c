@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:30:27 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/25 14:15:11 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:51:57 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ void	get_index_median(t_node *stack)
 		{
 			stack->above_median = true;
 		}
+		else
+			stack->above_median = false;
 		stack = stack->next;
+		i++;
 	}
 }
 
@@ -59,19 +62,20 @@ void	find_target_a2b(t_node *stack_a, t_node *stack_b)
 
 static void	find_cost_a2b(t_node *stack_a, t_node *stack_b)
 {
-	t_node	*target_b;
+	int		len_a;
+	int		len_b;
 
+	len_a = stack_len(stack_a);
+	len_b = stack_len(stack_b);
 	while (stack_a)
 	{
-		target_b = stack_a->target_node;
-		if (stack_a->above_median)
-			stack_a->cost = stack_a->index;
+		stack_a->cost = stack_a->index;
+		if (!(stack_a->above_median))
+			stack_a->cost = len_a - (stack_a->index);
+		if (stack_a->target_node->above_median)
+			stack_a->cost += stack_a->target_node->index;
 		else
-			stack_a->cost = stack_a->index - stack_len(stack_a);
-		if (target_b->above_median)
-			target_b->cost = target_b->index;
-		else
-			target_b->cost = target_b->index - stack_len(stack_b);
+			stack_a->cost += len_b - (stack_a->target_node->index);
 		stack_a = stack_a->next;
 	}
 }
@@ -79,9 +83,11 @@ static void	find_cost_a2b(t_node *stack_a, t_node *stack_b)
 void	set_cheapest(t_node *stack)
 {
 	t_node	*cheapest;
-	int		cheapest_cost;
+	long		cheapest_cost;
 
-	cheapest_cost = INT_MAX;
+	if (!stack)
+		return ;
+	cheapest_cost = LONG_MAX;
 	cheapest = NULL;
 	while (stack)
 	{
@@ -92,8 +98,7 @@ void	set_cheapest(t_node *stack)
 		}
 		stack = stack->next;
 	}
-	if (cheapest)
-		cheapest->cheapest = true;
+	cheapest->cheapest = true;
 }
 
 void	prepare_node_a(t_node *stack_a, t_node *stack_b)
