@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:52:14 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/25 18:40:26 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 20:26:56 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static void	push_a2b(t_node **stack_a, t_node **stack_b)
 
 static void	push_b2a(t_node **stack_b, t_node **stack_a)
 {
-    t_node *target_a;
+	t_node	*target_a;
 
-    if (!*stack_b)
-        return ;
-    target_a = (*stack_b)->target_node;
-    put_on_top(stack_a, target_a, 'a');
-    pa(stack_b, stack_a);
+	if (!*stack_b)
+		return ;
+	target_a = (*stack_b)->target_node;
+	put_on_top(stack_a, target_a, 'a');
+	pa(stack_b, stack_a);
 }
 
 static void	min_to_top(t_node **stack)

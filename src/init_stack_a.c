@@ -6,35 +6,30 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 16:19:10 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/26 19:43:07 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 20:28:21 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-/* Case of error, it must display "Error" followed ’\n’ on the standard error.
-Errors include, for example: some arguments not being integers, some arguments
-exceeding the integer limits, and/or the presence of duplicates. */
-
-
-
 static int	validity_checker(char *arg)
 {
-    int i = 0;
+	int	i;
 
-    if (!arg || !arg[0])
-        return (0);
-    if (arg[i] == '-' || arg[i] == '+')
-        i++;
-    if (!arg[i])
-        return (0); // sign only, no digits
-    while (arg[i])
-    {
-        if (arg[i] < '0' || arg[i] > '9')
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	if (!arg || !arg[0])
+		return (0);
+	if (arg[i] == '-' || arg[i] == '+')
+		i++;
+	if (!arg[i])
+		return (0);
+	while (arg[i])
+	{
+		if (arg[i] < '0' || arg[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 static long	ft_atol(char *str)

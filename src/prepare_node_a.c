@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:30:27 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/26 18:51:57 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 20:31:42 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	find_cost_a2b(t_node *stack_a, t_node *stack_b)
 
 void	set_cheapest(t_node *stack)
 {
-	t_node	*cheapest;
+	t_node		*cheapest;
 	long		cheapest_cost;
 
 	if (!stack)

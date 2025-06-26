@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 18:38:11 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/26 19:15:59 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 20:27:12 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	free_stack(t_node **stack)
 
 	while (*stack)
 	{
-		//printf("Freeing node with num: %d\n", (*stack)->num);
 		tmp = (*stack)->next;
 		free(*stack);
 		*stack = tmp;
