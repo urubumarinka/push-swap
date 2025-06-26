@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 16:19:10 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/19 13:38:00 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:43:07 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,11 @@ void	init_stack_a(t_node **stack_a, char **av)
 	int		i;
 	long	num;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
 		if (!validity_checker(av[i]))
-		{
-			printf("this is av[i]: %s and this is i %d\n", av[i], i);
 			free_and_error(stack_a);
-		}
 		num = ft_atol(av[i]);
 		if (num < INT_MIN || num > INT_MAX)
 			free_and_error(stack_a);

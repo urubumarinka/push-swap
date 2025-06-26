@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:33:27 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/23 12:44:47 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:53:30 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,34 +46,31 @@ static void	free_split(char **av)
 
 int	main(int ac, char **av)
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
-	int		i;
+    t_node	*stack_a = NULL;
+    t_node	*stack_b = NULL;
+    char	**args = NULL;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	i = 1;
-	if (ac < 2 || (ac == 2 && !av[1][0]))
-		error_msg();
-	else if (ac == 2)
-	{
-		av = split(av[1], ' ');
-		init_stack_a(&stack_a, av);
-		free_split(av);
-	}
-	else if (ac > 2)
-	{
-		while (++i < ac)
-			if (ft_strchr(av[i], ' '))
-				error_msg();
-		init_stack_a(&stack_a, av);
-	}
-	if (!stack_sorted(stack_a))
-		choose_algo(&stack_a, &stack_b);
-	free_stack(&stack_a);
-	return (0);
+    if (ac < 2 || (ac == 2 && !av[1][0]))
+        error_msg();
+
+    if (ac == 2)
+    {
+        args = split(av[1], ' ');
+        if (!args || !args[0])
+            error_msg();
+        init_stack_a(&stack_a, args); // args[0] is first value
+        free_split(args);
+    }
+    else
+    {
+        init_stack_a(&stack_a, &av[1]); // av[1] is first value
+    }
+
+    if (!stack_sorted(stack_a))
+        choose_algo(&stack_a, &stack_b);
+    free_stack(&stack_a);
+    return (0);
 }
-
 /* 	for (int i = 0; av[i] != NULL; i++)
 		printf("%s\n", av[i]); */
 

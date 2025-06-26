@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 15:39:52 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/18 19:34:50 by maborges         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:33:54 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,18 @@ static int	words_counter(char *s, char c)
 	bool	inside_word;
 
 	count = 0;
+	inside_word = false;
 	while (*s)
-	{
-		inside_word = false;
-		while (*s == c)
-			s++;
-		while (*s != c && *s)
-		{
-			if (!inside_word)
-			{
-				count++;
-				inside_word = true;
-			}
-			s++;
-		}
-	}
+	 {
+        if (*s != c && !inside_word)
+        {
+            inside_word = true;
+            count++;
+        }
+        else if (*s == c)
+            inside_word = false;
+        s++;
+    }
 	return (count);
 }
 
@@ -59,11 +56,14 @@ char	**split(char *s, char c)
 {
     int		i = 0;
     int		cursor = 0;
-    int		words_count = words_counter(s, c);
+    int		words_count;
     char	**array;
 
+	if (!s)
+		return (NULL);
+	words_count = words_counter(s, c);
     if (!words_count)
-        exit(1);
+        return (NULL);
     array = malloc(sizeof(char *) * (words_count + 1));
     if (!array)
         return (NULL);
