@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 12:33:27 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/26 20:31:15 by maborges         ###   ########.fr       */
+/*   Updated: 2025/07/04 17:05:23 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	args = NULL;
-	if (ac < 2 || (ac == 2 && !av[1][0]))
+	if (ac < 2)
 		return (0);
+	if (ac == 2 && !av[1][0])
+		error_msg();
 	if (ac == 2)
 	{
 		args = split(av[1], ' ');
