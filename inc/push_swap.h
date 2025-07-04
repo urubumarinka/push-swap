@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:42:54 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/25 14:11:12 by maborges         ###   ########.fr       */
+/*   Updated: 2025/07/04 15:14:44 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 # include <limits.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> // take it out at the end
-# include <stdbool.h> // check if I use bool flags or 0 1 flags
+# include <stdbool.h>
 
 //Data holding struct for stacks
-
 typedef struct s_node
 {
 	int						num;
@@ -45,8 +43,6 @@ void			init_stack_a(t_node **stack_a, char **av);
 void			get_index_median(t_node *stack);
 int				stack_sorted(t_node *stack);
 
-
-
 //Push_Swap Utils
 char			*ft_strchr(const char *s, int c);
 t_node			*find_max(t_node *stack);
@@ -59,7 +55,6 @@ void			find_target_a2b(t_node *stack_a, t_node *stack_b);
 void			set_cheapest(t_node *stack);
 t_node			*get_cheapest(t_node *stack);
 void			put_on_top(t_node **stack, t_node *cheapest, char stack_name);
-
 
 //Commands
 void			sa(t_node **stack_a);
@@ -77,7 +72,7 @@ void			rrr(t_node **stack_a, t_node **stack_b, t_node *cheapest);
 void			pa(t_node **stack_a, t_node**stack_b);
 void			pb(t_node **stack_b, t_node **stack_a);
 
-//Algorithm
+//Algorithms
 
 void			algo_three(t_node **stack_a);
 void			algo_multi(t_node **stack_a, t_node **stack_b);

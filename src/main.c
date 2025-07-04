@@ -21,7 +21,6 @@ int	stack_sorted(t_node *stack)
 		stack = stack->next;
 	}
 	return (1);
-
 }
 
 static void	choose_algo(t_node **stack_a, t_node **stack_b)
@@ -36,12 +35,14 @@ static void	choose_algo(t_node **stack_a, t_node **stack_b)
 
 static void	free_split(char **av)
 {
-    int i = 0;
-    if (!av)
-        return;
-    while (av[i])
-        free(av[i++]);
-    free(av);
+	int	i;
+
+	i = 0;
+	if (!av)
+		return ;
+	while (av[i])
+		free(av[i++]);
+	free(av);
 }
 
 int	main(int ac, char **av)
@@ -54,7 +55,7 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	args = NULL;
 	if (ac < 2 || (ac == 2 && !av[1][0]))
-		error_msg();
+		return (0);
 	if (ac == 2)
 	{
 		args = split(av[1], ' ');
@@ -70,11 +71,11 @@ int	main(int ac, char **av)
 	free_stack(&stack_a);
 	return (0);
 }
-/* 	for (int i = 0; av[i] != NULL; i++)
+/*	for (int i = 0; av[i] != NULL; i++)
 		printf("%s\n", av[i]); */
 
 /* while (stack_a != NULL)
 {
 	printf("%d\n", (*stack_a).num);
 	stack_a = (*stack_a).next;
-} */
+}*/

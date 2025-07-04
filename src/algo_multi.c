@@ -82,4 +82,3 @@ void	algo_multi(t_node **stack_a, t_node **stack_b)
 	get_index_median(*stack_a);
 	min_to_top(stack_a);
 }
-
