@@ -6,7 +6,7 @@
 #    By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/11 11:01:03 by maborges          #+#    #+#              #
-#    Updated: 2025/01/24 17:07:17 by maborges         ###   ########.fr        #
+#    Updated: 2025/01/28 17:16:24 by maborges         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinc -Isrc
+CFLAGS = -Wall -Wextra -Werror -Iinc
 
 # Source files
 SRCS =	src/ft_printf.c \

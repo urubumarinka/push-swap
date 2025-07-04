@@ -6,17 +6,11 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:50:45 by maborges          #+#    #+#             */
-/*   Updated: 2025/01/27 14:38:53 by maborges         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:10:06 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/* static int	ft_validspec(char c)
-{
-	return (c == 'd' || c == 'i' || c == 'c' || c == 's'
-		|| c == 'x' || c == 'X' || c == 'p' || c == 'u' || c == '%');
-} */
 
 static int	ft_check(va_list *args, char c)
 {

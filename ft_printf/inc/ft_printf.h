@@ -6,7 +6,7 @@
 /*   By: maborges <maborges@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:25:03 by maborges          #+#    #+#             */
-/*   Updated: 2025/06/11 12:56:52 by maborges         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:20:17 by maborges         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-int			ft_printf(const char *__format, ...);
+int			ft_printf(const char *format, ...);
 int			ft_putnbr(int n);
 int			ft_putnbr_unsigned(unsigned int n);
 int			ft_putstr(char *s);
