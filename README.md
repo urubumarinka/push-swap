@@ -14,3 +14,6 @@ ARGS=$(shuf -i 0-1000 -n 500 | tr '\n' ' '); ./push_swap $ARGS | ./checker_linux
 
 # Test with 100 random numbers (negative to positive):
 ARGS=$(seq -50 50 | shuf | tr '\n' ' '); ./push_swap $ARGS | ./checker_linux $ARGS
+
+# Test Memory leaks on Linux 
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap "3 2 1 4 5"
